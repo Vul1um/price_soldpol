@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Прайс-лист — SOLDPOL.RU</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:        #1A4FA0;
+    --blue-mid:    #1E5BBF;
+    --blue-light:  #2B67CC;
+    --blue-pale:   #E8F0FB;
+    --blue-deep:   #122F63;
+    --accent:      #FF6B00;
+    --accent-soft: #FFF0E6;
+    --gray-50:     #F7F8FA;
+    --gray-100:    #ECEEF2;
+    --gray-200:    #D4D8E2;
+    --gray-400:    #9298AA;
+    --gray-600:    #5B6278;
+    --gray-800:    #232735;
+    --white:       #ffffff;
+    --radius:      10px;
+    --radius-lg:   16px;
+    --shadow-sm:   0 1px 4px rgba(26,79,160,.08);
+    --shadow-md:   0 4px 16px rgba(26,79,160,.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-800);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-100);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .header-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 1.5rem;
+  }
+
+  .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--blue);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-icon {
+    width: 34px; height: 34px;
+    background: var(--blue);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-icon svg { width: 20px; height: 20px; }
+  .logo span { color: var(--accent); }
+
+  .header-right { display: flex; align-items: center; gap: 1.5rem; }
+  .header-contact { text-align: right; }
+  .header-contact-label { font-size: 11px; color: var(--gray-400); letter-spacing: .3px; text-transform: uppercase; }
+  .header-phone {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    color: var(--blue); display: block;
+    text-decoration: none; margin-top: 1px;
+  }
+  .header-cta {
+    background: var(--accent); color: white;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .82rem;
+    padding: .55rem 1.1rem; border-radius: var(--radius);
+    text-decoration: none; white-space: nowrap; letter-spacing: .3px;
+    transition: opacity .15s;
+  }
+  .header-cta:hover { opacity: .88; }
+
+  /* ── HERO ── */
+  .page-hero {
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 55%, var(--blue-light) 100%);
+    color: white;
+    padding: 4rem 2rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; pointer-events: none; opacity: .06;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,.6) 39px, rgba(255,255,255,.6) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,.6) 39px, rgba(255,255,255,.6) 40px);
+  }
+  .hero-inner {
+    max-width: 1160px; margin: 0 auto; position: relative;
+    display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: end;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+    border-radius: 100px; padding: .3rem .9rem;
+    font-size: .78rem; font-weight: 600; letter-spacing: .5px;
+    text-transform: uppercase; margin-bottom: .9rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+  }
+  .page-hero h1 {
+    font-family: 'Montserrat', sans-serif; font-weight: 900;
+    font-size: 2.8rem; line-height: 1.1; letter-spacing: -1px;
+    margin-bottom: .75rem;
+  }
+  .page-hero h1 em { color: #7FB3FF; font-style: normal; }
+  .hero-sub {
+    opacity: .8; font-size: 1rem; max-width: 520px; margin-bottom: 1.75rem; line-height: 1.6;
+  }
+  .hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+
+  .btn-download {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: white;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .88rem;
+    padding: .8rem 1.6rem; border-radius: var(--radius);
+    text-decoration: none; transition: opacity .2s, transform .15s; letter-spacing: .3px;
+  }
+  .btn-download:hover { opacity: .92; transform: translateY(-1px); }
+  .btn-download svg { width: 17px; height: 17px; }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1.5px solid rgba(255,255,255,.4); color: white;
+    font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: .88rem;
+    padding: .8rem 1.5rem; border-radius: var(--radius);
+    text-decoration: none; transition: background .2s; letter-spacing: .3px;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+  /* hero stats */
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding: 1.5rem 2rem; align-self: end;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Montserrat', sans-serif; font-weight: 900;
+    font-size: 2rem; line-height: 1; color: white;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: .75rem; opacity: .65; margin-top: 3px; letter-spacing: .3px; }
+
+  /* ── NAV TABS ── */
+  .nav-tabs-wrapper {
+    background: var(--blue-deep);
+    border-bottom: 2px solid rgba(255,255,255,.08);
+    position: sticky; top: 64px; z-index: 150;
+  }
+  .nav-tabs {
+    max-width: 1160px; margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex; gap: 0; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .nav-tab {
+    flex-shrink: 0;
+    padding: .85rem 1.15rem;
+    color: rgba(255,255,255,.55);
+    font-family: 'Montserrat', sans-serif; font-weight: 600;
+    font-size: .78rem; text-decoration: none;
+    border-bottom: 2px solid transparent; margin-bottom: -2px;
+    transition: color .15s, border-color .15s; white-space: nowrap;
+    letter-spacing: .2px;
+  }
+  .nav-tab:hover { color: rgba(255,255,255,.85); }
+  .nav-tab.active { color: white; border-color: var(--accent); }
+
+  /* ── MAIN ── */
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; }
+  main { padding: 2rem 0 5rem; }
+
+  /* note bar */
+  .note-bar {
+    background: #FFF8F0; border: 1px solid #FFD8A8;
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius); padding: .9rem 1.25rem;
+    font-size: .88rem; color: #7A4500;
+    margin: 1.75rem 0 0; display: flex; gap: 10px; align-items: flex-start;
+  }
+  .note-bar svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+
+  /* sections */
+  .section {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .2s;
+  }
+  .section:hover { box-shadow: var(--shadow-md); }
+
+  .section-header {
+    background: linear-gradient(90deg, var(--blue) 0%, var(--blue-mid) 100%);
+    color: white; padding: 1.1rem 1.5rem;
+    display: flex; align-items: center; gap: 12px;
+    cursor: pointer; user-select: none;
+  }
+  .section-header-icon {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,.15); border-radius: 9px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,.15);
+  }
+  .section-header-icon svg { width: 18px; height: 18px; }
+  .section-header-title { flex: 1; }
+  .section-header h2 {
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 1rem; letter-spacing: .2px;
+  }
+  .section-count {
+    font-size: .72rem; opacity: .6; margin-top: 1px; font-weight: 500;
+  }
+  .section-toggle {
+    width: 28px; height: 28px;
+    background: rgba(255,255,255,.12); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .25s, background .15s; flex-shrink: 0;
+  }
+  .section-toggle svg { width: 14px; height: 14px; }
+  .section.collapsed .section-toggle { transform: rotate(-90deg); }
+
+  .section-body { overflow: hidden; transition: max-height .35s cubic-bezier(.4,0,.2,1); }
+  .section.collapsed .section-body { max-height: 0 !important; }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead tr {
+    background: var(--blue-pale);
+    font-size: .75rem; font-family: 'Montserrat', sans-serif;
+    font-weight: 700; text-transform: uppercase;
+    letter-spacing: .6px; color: var(--blue);
+  }
+  thead th { padding: .7rem 1.4rem; text-align: left; white-space: nowrap; }
+  thead th:last-child { text-align: right; }
+
+  tbody tr { border-top: 1px solid var(--gray-100); transition: background .12s; }
+  tbody tr:hover { background: #F4F7FD; }
+
+  tbody td { padding: .9rem 1.4rem; vertical-align: middle; }
+
+  .product-name { font-weight: 600; color: var(--gray-800); font-size: .93rem; }
+  .product-sub { font-size: .78rem; color: var(--gray-600); margin-top: 2px; }
+
+  .price-cell { text-align: right; white-space: nowrap; }
+
+  .price-badge {
+    display: inline-flex; align-items: center;
+    background: var(--blue-pale); color: var(--blue);
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .9rem;
+    padding: .32rem .85rem; border-radius: 6px; border: 1px solid #BDD3F7;
+  }
+
+  .price-request {
+    display: inline-block; background: var(--gray-100); color: var(--gray-600);
+    font-size: .83rem; font-weight: 500; padding: .32rem .75rem;
+    border-radius: 6px; font-style: italic;
+  }
+
+  .surcharge-row td {
+    background: #FFFBF0; color: #7A4500;
+    font-size: .82rem; padding: .6rem 1.4rem;
+    border-top: 1px dashed #FFD8A8; font-style: italic;
+    display: table-cell;
+  }
+  .surcharge-row td::before {
+    content: '＋'; margin-right: .35em; color: var(--accent); font-style: normal;
+  }
+  .surcharge-row td:last-child { text-align: right; }
+
+  .note-row td {
+    background: #F2F7FF; color: var(--blue);
+    font-size: .81rem; padding: .55rem 1.4rem;
+    border-top: 1px dashed var(--blue-pale);
+  }
+
+  .col-name { width: 65%; }
+  .col-price { width: 35%; }
+
+  /* ── CONTACT CTA ── */
+  .contact-section {
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
+    border-radius: var(--radius-lg); padding: 3rem 2.5rem;
+    text-align: center; margin-top: 2rem; color: white; position: relative; overflow: hidden;
+  }
+  .contact-section::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 240px; height: 240px; border-radius: 50%;
+    background: rgba(255,255,255,.04); pointer-events: none;
+  }
+  .contact-section::after {
+    content: '';
+    position: absolute; bottom: -40px; left: -40px;
+    width: 160px; height: 160px; border-radius: 50%;
+    background: rgba(255,107,0,.08); pointer-events: none;
+  }
+  .contact-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+    border-radius: 100px; padding: .3rem .9rem; font-size: .75rem;
+    font-weight: 600; letter-spacing: .4px; text-transform: uppercase;
+    margin-bottom: 1.1rem;
+  }
+  .contact-section h3 {
+    font-family: 'Montserrat', sans-serif; font-weight: 900;
+    font-size: 1.7rem; margin-bottom: .6rem; letter-spacing: -.3px; position: relative;
+  }
+  .contact-section p {
+    opacity: .75; font-size: .95rem; margin-bottom: 1.75rem;
+    max-width: 480px; margin-left: auto; margin-right: auto; position: relative;
+  }
+  .contact-features {
+    display: flex; justify-content: center; gap: 2rem;
+    margin-bottom: 2rem; flex-wrap: wrap; position: relative;
+  }
+  .contact-feature {
+    display: flex; align-items: center; gap: 7px;
+    font-size: .82rem; opacity: .75;
+  }
+  .contact-feature svg { width: 15px; height: 15px; color: #7FB3FF; flex-shrink: 0; }
+  .contact-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+  .btn-primary {
+    background: var(--accent); color: white;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .9rem;
+    padding: .85rem 1.75rem; border-radius: var(--radius); text-decoration: none;
+    transition: opacity .2s, transform .15s; letter-spacing: .3px;
+  }
+  .btn-primary:hover { opacity: .9; transform: translateY(-1px); }
+
+  .btn-outline-white {
+    background: transparent; color: white;
+    border: 1.5px solid rgba(255,255,255,.4);
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .9rem;
+    padding: .85rem 1.75rem; border-radius: var(--radius); text-decoration: none;
+    transition: background .2s; letter-spacing: .3px;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,.1); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--blue-deep); color: rgba(255,255,255,.45);
+    text-align: center; padding: 1.5rem;
+    font-size: .8rem; letter-spacing: .2px;
+  }
+  footer a { color: rgba(255,255,255,.6); text-decoration: none; }
+  footer a:hover { color: white; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-stats { border-radius: var(--radius-lg); margin-bottom: 1.5rem; justify-content: space-around; }
+    .page-hero h1 { font-size: 2rem; }
+  }
+  @media (max-width: 640px) {
+    .page-hero { padding: 2.5rem 1.25rem 0; }
+    .page-hero h1 { font-size: 1.65rem; }
+    thead th, tbody td { padding: .7rem .9rem; font-size: .83rem; }
+    .price-badge { font-size: .83rem; }
+    .header-cta { display: none; }
+    .logo-icon { display: none; }
+    .hero-stats { gap: 1.25rem; padding: 1.1rem 1.25rem; }
+    .stat-num { font-size: 1.5rem; }
+    .contact-section { padding: 2rem 1.25rem; }
+    .contact-section h3 { font-size: 1.3rem; }
+    .contact-features { gap: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="https://soldpol.ru/" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      </div>
+      SOLD<span>POL</span>
+    </a>
+    <div class="header-right">
+      <div class="header-contact">
+        <span class="header-contact-label">Звонок бесплатный</span>
+        <a href="tel:88005506419" class="header-phone">8 (800) 550-64-19</a>
+      </div>
+      <a href="https://soldpol.ru/kontakty/" class="header-cta">Получить расчёт</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Актуальные цены · 2025</div>
+      <h1>Прайс-лист<br><em>SOLDPOL.RU</em></h1>
+      <p class="hero-sub">ПВХ-плитка, резиновые и модульные покрытия, диэлектрика, уличные системы — от производителя. Базовая цена за серый цвет RAL 7037.</p>
+      <div class="hero-actions">
+        <a href="https://soldpol.ru/wa-data/public/site/Dokumenty/price_soldpol.ru.pdf" class="btn-download" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Скачать PDF-прайс
+        </a>
+        <a href="https://soldpol.ru/kontakty/" class="btn-ghost" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.95 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Связаться с менеджером
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">9<span>+</span></div>
+        <div class="stat-label">категорий товаров</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">наименований</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">РФ</div>
+        <div class="stat-label">доставка по России</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-tabs-wrapper">
+  <nav class="nav-tabs" aria-label="Разделы прайса">
+    <a class="nav-tab active" href="#pvkh-500">ПВХ 500×500</a>
+    <a class="nav-tab" href="#pvkh-12">ПВХ 12мм</a>
+    <a class="nav-tab" href="#pvkh-mini">ПВХ Mini</a>
+    <a class="nav-tab" href="#gryaze">Грязезащита</a>
+    <a class="nav-tab" href="#rubber">Резина Rubber</a>
+    <a class="nav-tab" href="#modul">Модульная резина</a>
+    <a class="nav-tab" href="#ulichnoe">Уличное</a>
+    <a class="nav-tab" href="#dostupnaya">Доступная среда</a>
+    <a class="nav-tab" href="#dielek">Диэлектрика</a>
+  </nav>
+</div>
+
+<main>
+<div class="container">
+
+  <div class="note-bar">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span>Все цены указаны за <strong>серый цвет RAL 7037</strong>. Наценка на другие цвета указана в каждом разделе. Цены носят информационный характер — уточняйте актуальную стоимость у менеджеров.</span>
+  </div>
+
+  <!-- ПВХ 500x500 -->
+  <div class="section" id="pvkh-500" style="margin-top:1.75rem">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      </div>
+      <div class="section-header-title">
+        <h2>ПВХ плитка 500×500 мм</h2>
+        <div class="section-count">цена за 1 кв.м. · 9 позиций</div>
+      </div>
+      <div class="section-toggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div class="section-body">
+    <table>
+      <thead><tr>
+        <th class="col-name">Наименование</th>
+        <th class="col-price">Розница</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>
+          <div class="product-name">Sold 4 мм, 500×500 мм</div>
+          <div class="product-sub">Фактуры: Grain, Skin</div>
+        </td><td class="price-cell"><span class="price-badge">1 670 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Sold 5 мм, 500×500 мм</div>
+          <div class="product-sub">Фактуры: Grain, Modern, Terra, Skin, Flat, Prom, Max, Decor</div>
+        </td><td class="price-cell"><span class="price-badge">1 780 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Sold Grain, Premium (скрытый замок) 5 мм, 500×500 мм</div>
+        </td><td class="price-cell"><span class="price-badge">1 840 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Sold Lock, Fix (скрытый замок) 6 мм, 500×500 мм</div>
+        </td><td class="price-cell"><span class="price-badge">2 120 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Sold Premium (скрытый замок) 6,5 мм, 500×500 мм</div>
+        </td><td class="price-cell"><span class="price-badge">2 370 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Sold 7 мм DIAMOND, 500×500 мм</div>
+        </td><td class="price-cell"><span class="price-badge">2 120 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Sold 7 мм, 500×500 мм</div>
+          <div class="product-sub">Фактуры: Grain, Modern, Terra, Skin, Flat, Prom, Max, Decor</div>
+        </td><td class="price-cell"><span class="price-badge">2 270 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Sold Lock, Grain (скрытый замок) 7 мм, 500×500 мм</div>
+        </td><td class="price-cell"><span class="price-badge">2 370 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Sold 9 мм, 500×500 мм</div>
+          <div class="product-sub">Фактуры: Grain, Max, Modern, Skin, Prom, Decor</div>
+        </td><td class="price-cell"><span class="price-badge">2 790 руб./кв.м</span></td></tr>
+        <tr class="surcharge-row"><td colspan="2">Наценка на цвет: 4 мм — 120 руб./кв.м &nbsp;|&nbsp; 5 мм — 160 руб./кв.м &nbsp;|&nbsp; 6–7 мм — 200 руб./кв.м &nbsp;|&nbsp; 9 мм — 240 руб./кв.м</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ПВХ 12 мм ласточкин хвост -->
+  <div class="section" id="pvkh-12">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="section-header-title">
+        <h2>ПВХ 12 мм «Ласточкин хвост»</h2>
+        <div class="section-count">цена за 1 шт. · 1 позиция</div>
+      </div>
+      <div class="section-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="section-body">
+    <table>
+      <thead><tr><th class="col-name">Наименование</th><th class="col-price">Розница</th></tr></thead>
+      <tbody>
+        <tr><td>
+          <div class="product-name">Sold Grain (ласточкин хвост) 12 мм, 475×475 мм</div>
+        </td><td class="price-cell"><span class="price-badge">790 руб./шт.</span></td></tr>
+        <tr class="surcharge-row"><td colspan="2">Наценка на цвет: 70 руб./шт.</td></tr>
+        <tr class="note-row"><td colspan="2">Продажа 12 мм: серая и чёрная — от 1 шт., цветная — от 100 шт.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ПВХ Mini -->
+  <div class="section" id="pvkh-mini">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <div class="section-header-title">
+        <h2>ПВХ Mini 250×250 мм</h2>
+        <div class="section-count">цена за 1 кв.м. · 3 позиции</div>
+      </div>
+      <div class="section-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="section-body">
+    <table>
+      <thead><tr><th class="col-name">Наименование</th><th class="col-price">Розница</th></tr></thead>
+      <tbody>
+        <tr><td>
+          <div class="product-name">Mini Prom, Grain, Skin 5 мм, 250×250 мм</div>
+          <div class="product-sub">Цвет RAL 9005 (чёрный)</div>
+        </td><td class="price-cell"><span class="price-badge">990 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Mini Prom, Grain, Skin 5 мм, 250×250 мм</div>
+          <div class="product-sub">Цвет RAL 7040</div>
+        </td><td class="price-cell"><span class="price-badge">1 340 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Mini Prom, Grain, Skin 5 мм, 250×250 мм</div>
+          <div class="product-sub">Остальные цвета RAL</div>
+        </td><td class="price-cell"><span class="price-badge">1 410 руб./кв.м</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Грязезащитные покрытия -->
+  <div class="section" id="gryaze">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="section-header-title">
+        <h2>Грязезащитные покрытия ПВХ</h2>
+        <div class="section-count">цена за 1 кв.м. · 2 позиции</div>
+      </div>
+      <div class="section-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="section-body">
+    <table>
+      <thead><tr><th class="col-name">Наименование</th><th class="col-price">Розница</th></tr></thead>
+      <tbody>
+        <tr><td>
+          <div class="product-name">Sold «Антикаблук» 9 мм, 200×200 мм</div>
+          <div class="product-sub">25 шт./кв.м.</div>
+        </td><td class="price-cell"><span class="price-badge">1 840 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Sold «Волна» 14 мм, 300×100 мм</div>
+          <div class="product-sub">34 шт./кв.м.</div>
+        </td><td class="price-cell"><span class="price-badge">2 030 руб./кв.м</span></td></tr>
+        <tr class="surcharge-row"><td colspan="2">Наценка на цвет: 200 руб./кв.м.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Резиновая плитка Rubber -->
+  <div class="section" id="rubber">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+      </div>
+      <div class="section-header-title">
+        <h2>Цветная резиновая плитка Rubber</h2>
+        <div class="section-count">цена за 1 кв.м. · 2 позиции</div>
+      </div>
+      <div class="section-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="section-body">
+    <table>
+      <thead><tr><th class="col-name">Наименование</th><th class="col-price">Розница</th></tr></thead>
+      <tbody>
+        <tr><td>
+          <div class="product-name">Rubber Grain, Rubber Prom, Rubber Skin — 9 мм</div>
+        </td><td class="price-cell"><span class="price-badge">2 800 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Rubber Grain — 12 мм, 475×475 мм (ласточкин хвост)</div>
+        </td><td class="price-cell"><span class="price-request">цена по запросу</span></td></tr>
+        <tr class="note-row"><td colspan="2">Продажа: серая и чёрная — от 1 шт., цветная — от 100 шт.</td></tr>
+        <tr class="surcharge-row"><td colspan="2">Наценка на цвет: 9 мм — 300 руб./кв.м &nbsp;|&nbsp; 12 мм — уточняйте у менеджера</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Модульная резина -->
+  <div class="section" id="modul">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      </div>
+      <div class="section-header-title">
+        <h2>Модульная резина</h2>
+        <div class="section-count">цена за 1 кв.м. / 1 шт. · 11 позиций</div>
+      </div>
+      <div class="section-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="section-body">
+    <table>
+      <thead><tr><th class="col-name">Наименование</th><th class="col-price">Розница</th></tr></thead>
+      <tbody>
+        <tr><td>
+          <div class="product-name">Унидор 20 мм × 500×500 мм RAL 9005</div>
+          <div class="product-sub">цена за кв.м.</div>
+        </td><td class="price-cell"><span class="price-badge">2 200 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Унидор-Техно 20 мм × 500×500 мм RAL 9005</div>
+          <div class="product-sub">цена за кв.м.</div>
+        </td><td class="price-cell"><span class="price-badge">2 120 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Трансформер 16 мм × 500×500 мм RAL 9005</div>
+          <div class="product-sub">цена за кв.м.</div>
+        </td><td class="price-cell"><span class="price-badge">2 150 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">СпецПол 10 мм × 500×500 мм RAL 9005</div>
+          <div class="product-sub">цена за кв.м.</div>
+        </td><td class="price-cell"><span class="price-badge">1 620 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Технопол 25 мм × 500×500 мм RAL 9005</div>
+          <div class="product-sub">цена за кв.м.</div>
+        </td><td class="price-cell"><span class="price-badge">2 150 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Спецформер 10 мм × 500×500 мм RAL 9005</div>
+          <div class="product-sub">цена за кв.м.</div>
+        </td><td class="price-cell"><span class="price-badge">1 700 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Юзипол 9 мм × 1000×1000 мм — Монета, Мрамор RAL 9005</div>
+          <div class="product-sub">цена за шт.</div>
+        </td><td class="price-cell"><span class="price-badge">2 250 руб./шт.</span></td></tr>
+        <tr><td>
+          <div class="product-name">Животноводческая плита 20 мм × 1800×1200 мм RAL 9005</div>
+          <div class="product-sub">цена за шт.</div>
+        </td><td class="price-cell"><span class="price-badge">6 525 руб./шт.</span></td></tr>
+        <tr><td>
+          <div class="product-name">Животноводческая плита 13 мм × 1930×1010 мм RAL 9005</div>
+          <div class="product-sub">цена за шт.</div>
+        </td><td class="price-cell"><span class="price-badge">5 185 руб./шт.</span></td></tr>
+        <tr><td>
+          <div class="product-name">Животноводческая плита 13 мм × 1930×1210 мм RAL 9005</div>
+          <div class="product-sub">цена за шт.</div>
+        </td><td class="price-cell"><span class="price-badge">5 185 руб./шт.</span></td></tr>
+        <tr><td>
+          <div class="product-name">Бытовой коврик 6 мм × 500×500 мм RAL 9005</div>
+          <div class="product-sub">цена за шт.</div>
+        </td><td class="price-cell"><span class="price-badge">225 руб./шт.</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Уличное покрытие -->
+  <div class="section" id="ulichnoe">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      </div>
+      <div class="section-header-title">
+        <h2>Уличное покрытие — полипропилен</h2>
+        <div class="section-count">цена за 1 кв.м. · 3 позиции</div>
+      </div>
+      <div class="section-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="section-body">
+    <table>
+      <thead><tr><th class="col-name">Наименование</th><th class="col-price">Розница</th></tr></thead>
+      <tbody>
+        <tr><td>
+          <div class="product-name">Экопласт 20 мм × 500×500 мм</div>
+          <div class="product-sub">RAL 9005, 7037, 6029 (4 шт./кв.м.)</div>
+        </td><td class="price-cell"><span class="price-badge">1 260 руб./кв.м</span></td></tr>
+        <tr><td>
+          <div class="product-name">Террапласт 11 мм × 300×300 мм</div>
+          <div class="product-sub">12 шт./кв.м.</div>
+        </td><td class="price-cell"><span class="price-badge">1 080 руб./кв.м</span></td></tr>
+        <tr class="surcharge-row"><td colspan="2">Наценка на цвет: 300 руб./кв.м.</td></tr>
+        <tr><td>
+          <div class="product-name">Геопласт (подложка) 16 мм × 300×300 мм</div>
+          <div class="product-sub">12 шт./кв.м. — подложка под садовый паркет</div>
+        </td><td class="price-cell"><span class="price-badge">65 руб./шт.</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Доступная среда -->
+  <div class="section" id="dostupnaya">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="section-header-title">
+        <h2>Доступная среда и комплектующие ПВХ</h2>
+        <div class="section-count">5 позиций</div>
+      </div>
+      <div class="section-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="section-body">
+    <table>
+      <thead><tr><th class="col-name">Наименование</th><th class="col-price">Розница</th></tr></thead>
+      <tbody>
+        <tr><td><div class="product-name">Тактильная плитка 6 мм, 300×300 мм RAL 1018</div></td>
+          <td class="price-cell"><span class="price-badge">168 руб./шт.</span></td></tr>
+        <tr><td><div class="product-name">Порог 7 мм, 145×500 мм RAL 7037</div></td>
+          <td class="price-cell"><span class="price-badge">441 руб./шт.</span></td></tr>
+        <tr><td><div class="product-name">Разметка 7 мм, 130×500 мм RAL 7037</div></td>
+          <td class="price-cell"><span class="price-badge">441 руб./шт.</span></td></tr>
+        <tr class="surcharge-row"><td colspan="2">Наценка на цвет (порог, разметка): 60 руб./шт.</td></tr>
+        <tr><td><div class="product-name">Клей Forbo 144 Euromix PU 2-C Universal, 7,875 кг</div></td>
+          <td class="price-cell"><span class="price-badge">4 500 руб.</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Диэлектрика -->
+  <div class="section" id="dielek">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div class="section-header-title">
+        <h2>Диэлектрическая продукция</h2>
+        <div class="section-count">7 позиций</div>
+      </div>
+      <div class="section-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="section-body">
+    <table>
+      <thead><tr><th class="col-name">Наименование</th><th class="col-price">Розница</th></tr></thead>
+      <tbody>
+        <tr><td><div class="product-name">Коврик диэлектрический 500×500×6 мм</div></td>
+          <td class="price-cell"><span class="price-badge">280 руб./шт.</span></td></tr>
+        <tr><td><div class="product-name">Коврик диэлектрический 600×600×6 мм</div></td>
+          <td class="price-cell"><span class="price-badge">425 руб./шт.</span></td></tr>
+        <tr><td><div class="product-name">Коврик диэлектрический 750×750×6 мм</div></td>
+          <td class="price-cell"><span class="price-badge">535 руб./шт.</span></td></tr>
+        <tr><td><div class="product-name">Коврик диэлектрический 900×900×6 мм</div></td>
+          <td class="price-cell"><span class="price-badge">1 140 руб./шт.</span></td></tr>
+        <tr><td><div class="product-name">Коврик диэлектрический 1000×1000×6 мм</div></td>
+          <td class="price-cell"><span class="price-badge">1 180 руб./шт.</span></td></tr>
+        <tr><td>
+          <div class="product-name">Перчатки диэлектрические латексные</div>
+          <div class="product-sub">Минимальный заказ — 30 пар</div>
+        </td><td class="price-cell"><span class="price-badge">655 руб./пара</span></td></tr>
+        <tr><td>
+          <div class="product-name">Перчатки диэлектрические шовные</div>
+          <div class="product-sub">Минимальный заказ — 50 пар</div>
+        </td><td class="price-cell"><span class="price-badge">425 руб./пара</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="contact-section">
+    <div class="contact-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.95 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Нужна консультация?
+    </div>
+    <h3>Поможем подобрать и рассчитать</h3>
+    <p>Наши менеджеры подберут оптимальное покрытие, рассчитают количество и итоговую стоимость для вашего объекта.</p>
+    <div class="contact-features">
+      <div class="contact-feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Расчёт за 15 минут
+      </div>
+      <div class="contact-feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Оптовые цены от 100 кв.м.
+      </div>
+      <div class="contact-feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Доставка по всей России
+      </div>
+    </div>
+    <div class="contact-btns">
+      <a href="tel:88005506419" class="btn-primary">
+        Позвонить бесплатно
+      </a>
+      <a href="https://soldpol.ru/kontakty/" class="btn-outline-white" target="_blank">Написать менеджеру</a>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <a href="https://soldpol.ru/">soldpol.ru</a> &nbsp;·&nbsp; ООО ЮгСпецЗащита &nbsp;·&nbsp; г. Ростов-на-Дону, ул. Вавилова, 59В/101
+</footer>
+
+<script>
+  // Collapsible sections
+  function toggleSection(header) {
+    const section = header.closest('.section');
+    const body = section.querySelector('.section-body');
+    const isCollapsed = section.classList.contains('collapsed');
+    if (isCollapsed) {
+      section.classList.remove('collapsed');
+      body.style.maxHeight = body.scrollHeight + 'px';
+      setTimeout(() => { body.style.maxHeight = 'none'; }, 360);
+    } else {
+      body.style.maxHeight = body.scrollHeight + 'px';
+      requestAnimationFrame(() => {
+        section.classList.add('collapsed');
+      });
+    }
+  }
+
+  // Init max-heights
+  document.querySelectorAll('.section-body').forEach(b => {
+    b.style.maxHeight = 'none';
+  });
+
+  // Active nav tab on scroll
+  const tabs = document.querySelectorAll('.nav-tab');
+  const sections = document.querySelectorAll('.section[id]');
+  const tabOffset = 130;
+
+  function updateActiveTab() {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - tabOffset) {
+        current = sec.id;
+      }
+    });
+    tabs.forEach(tab => {
+      tab.classList.toggle('active', tab.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateActiveTab, { passive: true });
+</script>
+</body>
+</html>
